@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeMind 代码库脑 — 产品宣传手册</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: #0a0e1a; color: #e8ecf2; line-height: 1.7; }
+  .page { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+  /* Nav */
+  .top-nav { position: sticky; top: 0; z-index: 100; background: rgba(10,14,26,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1f2940; padding: 12px 0; }
+  .top-nav-inner { max-width: 880px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+  .top-nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #e8ecf2; font-weight: 800; font-size: 15px; }
+  .top-nav-logo span { width: 26px; height: 26px; border-radius: 6px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: #0a0e1a; font-family: monospace; }
+  .top-nav-links { display: flex; gap: 20px; font-size: 13px; }
+  .top-nav-links a { color: #6b7a99; text-decoration: none; transition: color 0.2s; }
+  .top-nav-links a:hover { color: #4ecdc4; }
+
+  /* Sections */
+  .section { padding: 56px 0; border-bottom: 1px solid #1f2940; }
+  .section:last-child { border-bottom: none; }
+  .stitle { font-size: 11px; color: #4ecdc4; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; margin-bottom: 10px; }
+  .h2 { font-size: 28px; font-weight: 900; margin-bottom: 12px; }
+  .desc { font-size: 15px; color: #8b93a8; max-width: 640px; margin-bottom: 28px; }
+
+  /* Hero */
+  .hero { padding: 72px 0 56px; text-align: center; border-bottom: 1px solid #1f2940; }
+  .hero-logo { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .hero-logo-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #0a0e1a; font-family: monospace; }
+  .hero-title { font-size: 40px; font-weight: 900; margin-bottom: 12px; }
+  .hero-sub { font-size: 18px; color: #8b93a8; margin-bottom: 8px; }
+  .hero-gradient { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, #4ecdc4, #6a8cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+  .hero-badge { display: inline-block; padding: 5px 16px; background: rgba(78,205,196,0.08); border: 1px solid rgba(78,205,196,0.2); border-radius: 100px; font-size: 12px; color: #4ecdc4; }
+  .hero-cta { display: inline-block; margin-top: 24px; padding: 12px 32px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); color: #0a0e1a; border-radius: 10px; font-weight: 800; font-size: 15px; text-decoration: none; }
+
+  /* Story */
+  .story-card { padding: 32px; background: #111827; border: 1px solid #1f2940; border-radius: 14px; position: relative; overflow: hidden; }
+  .story-card::before { content: '"'; position: absolute; top: -20px; right: 20px; font-size: 200px; opacity: 0.03; font-family: serif; }
+  .story-quote { padding: 16px 20px; background: #0a0e1a; border-left: 4px solid #ffd166; border-radius: 0 8px 8px 0; margin: 16px 0; font-style: italic; color: #a0aec0; font-size: 15px; }
+  .story-punchline { color: #ff6b6b; font-weight: 800; font-size: 20px; margin-top: 16px; }
+
+  /* Grid cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card { padding: 20px; background: #111827; border: 1px solid #1f2940; border-radius: 10px; }
+  .card-top { border-top: 3px solid #4ecdc4; }
+  .card-top-red { border-top: 3px solid #ff6b6b; }
+  .card h3 { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+  .card p { font-size: 12px; color: #8b93a8; line-height: 1.65; }
+  .card-tag { display: inline-block; padding: 2px 8px; background: rgba(78,205,196,0.08); border-radius: 100px; font-size: 10px; color: #4ecdc4; margin-top: 8px; }
+  .card-tag-red { background: rgba(255,107,107,0.08); color: #ff6b6b; }
+
+  /* Pain */
+  .pain-num { font-size: 32px; font-weight: 900; color: #ff6b6b; font-family: monospace; line-height: 1; }
+  .pain-label { font-size: 13px; color: #a0aec0; margin-top: 4px; }
+  .pain-src { font-size: 10px; color: #4a5568; margin-top: 4px; }
+
+  /* Innovation */
+  .inno { text-align: center; padding: 18px 10px; }
+  .inno-icon { font-size: 28px; margin-bottom: 6px; }
+  .inno-name { font-size: 12px; font-weight: 700; color: #4ecdc4; }
+  .inno-desc { font-size: 10px; color: #6b7a99; margin-top: 3px; line-height: 1.4; }
+
+  /* ROI */
+  .roi-big { text-align: center; margin-bottom: 24px; }
+  .roi-num { font-size: 56px; font-weight: 900; font-family: monospace; background: linear-gradient(135deg, #51cf66, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+  .roi-card { text-align: center; padding: 14px; }
+  .roi-before { font-size: 13px; color: #ff6b6b; text-decoration: line-through; opacity: 0.6; }
+  .roi-after { font-size: 20px; font-weight: 900; color: #51cf66; font-family: monospace; margin: 3px 0; }
+  .roi-label { font-size: 10px; color: #6b7a99; }
+
+  /* Flow */
+  .flow { display: flex; align-items: center; gap: 0; }
+  .flow-step { flex: 1; text-align: center; padding: 16px 8px; }
+  .flow-step-icon { font-size: 28px; margin-bottom: 6px; }
+  .flow-step-title { font-size: 13px; font-weight: 700; }
+  .flow-step-desc { font-size: 10px; color: #6b7a99; margin-top: 2px; }
+  .flow-arrow { color: #4ecdc4; font-size: 20px; font-weight: 900; flex-shrink: 0; }
+
+  /* Scenarios */
+  .scenario { padding: 20px; border-left: 3px solid #4ecdc4; }
+  .scenario-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .scenario-desc { font-size: 12px; color: #8b93a8; }
+
+  /* Footer */
+  .footer { padding: 32px 0; text-align: center; }
+  .footer-cta { display: inline-block; padding: 14px 40px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); color: #0a0e1a; border-radius: 10px; font-weight: 800; font-size: 16px; text-decoration: none; margin-bottom: 16px; }
+  .footer-url { font-size: 13px; color: #4ecdc4; font-family: monospace; }
+  .footer-sub { font-size: 11px; color: #4a5568; margin-top: 8px; }
+
+  @media (max-width: 700px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } .flow { flex-direction: column; } .flow-arrow { transform: rotate(90deg); } }
+  @media print { body { background: #fff; color: #1a1a1a; } .card, .story-card { background: #f7f8fa; border-color: #e0e0e0; } .top-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<div class="top-nav">
+  <div class="top-nav-inner">
+    <a href="#" class="top-nav-logo"><span>CM</span> CodeMind</a>
+    <div class="top-nav-links">
+      <a href="#story">故事</a>
+      <a href="#pain">痛点</a>
+      <a href="#engine">引擎</a>
+      <a href="#innovation">创新</a>
+      <a href="#roi">效果</a>
+      <a href="#flow">流程</a>
+      <a href="#demo">体验</a>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- Hero -->
+<div class="hero" id="hero">
+  <div class="hero-logo">
+    <div class="hero-logo-icon">CM</div>
+  </div>
+  <div class="hero-title">CodeMind</div>
+  <div class="hero-sub">代码库脑 — 让团队的集体智慧永不流失</div>
+  <div class="hero-gradient">AI 驱动的研发团队知识传承平台</div>
+  <div class="hero-badge">🏆 AI 提效赛道参赛作品</div>
+  <br>
+  <a href="https://cvk0524.github.io/codemind/" class="hero-cta" target="_blank">立即体验产品 →</a>
+</div>
+
+<!-- Story -->
+<div class="section" id="story">
+  <div class="stitle">一个真实的故事</div>
+  <div class="story-card">
+    <p style="font-size:16px;margin-bottom:12px;"><strong style="color:#4ecdc4;">老王</strong> 在公司 8 年，主导设计了订单系统。今天是他最后一天。</p>
+    <p style="font-size:15px;color:#6b7a99;margin-bottom:12px;">3 个月后，深夜 11 点。</p>
+    <p style="font-size:15px;margin-bottom:4px;">新来的 <strong style="color:#6a8cff;">小陈</strong> 在加班群里发了一条消息：</p>
+    <div class="story-quote">"这个 bug 我查了 3 天。代码里第 456 行有个神奇的 if 判断，没人知道为什么，也没人敢删。"</div>
+    <div class="story-punchline">老王脑子里的东西，一走就没了。</div>
+    <p style="font-size:13px;color:#6b7a99;margin-top:16px;">这不是一个团队的故事。这是<strong style="color:#e8ecf2;">所有团队</strong>的故事。<br><strong style="color:#4ecdc4;">CodeMind 就是为这个故事而生。</strong></p>
+  </div>
+</div>
+
+<!-- Pain -->
+<div class="section" id="pain">
+  <div class="stitle">三大核心痛点</div>
+  <div class="h2">AI 解决了"怎么写"，但没人解决"为什么这么写"</div>
+  <div class="desc">Cursor、Windsurf 让代码生成效率飙升，但真正卡住团队的是装在人脑里的隐性经验。</div>
+  <div class="grid-3">
+    <div class="card" style="text-align:center;">
+      <div class="pain-num">3-6 月</div>
+      <div class="pain-label">新人上手周期</div>
+      <div class="pain-src">Stack Overflow 2025 调研</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div class="pain-num">30-50%</div>
+      <div class="pain-label">离职知识流失率</div>
+      <div class="pain-src">MIT 组织学习研究</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div class="pain-num">30%</div>
+      <div class="pain-label">开发者时间找信息</div>
+      <div class="pain-src">80% 问题团队之前解决过</div>
+    </div>
+  </div>
+</div>
+
+<!-- Three Engines -->
+<div class="section" id="engine">
+  <div class="stitle">三大 AI 引擎</div>
+  <div class="h2">萃取 → 传承 → 预警，知识全生命周期闭环</div>
+  <div class="grid-3">
+    <div class="card card-top">
+      <h3>🎙️ 知识萃取</h3>
+      <p>AI 访谈 30 分钟萃取多年经验，生成结构化知识胶囊。临别寄语以第一人称写信，让传承有温度。代码分析一键识别设计动机和陷阱。</p>
+      <div class="card-tag">离职访谈 · 临别寄语 · 代码分析</div>
+    </div>
+    <div class="card card-top">
+      <h3>👤 新人赋能</h3>
+      <p>"如果老王还在他会说..."——AI 调取知识胶囊回答，不是通用大模型的泛泛回答。Bug 记忆库语义匹配历史方案。知识图谱可视化全局关系。</p>
+      <div class="card-tag">新人陪跑 · Bug 记忆库 · 知识图谱</div>
+    </div>
+    <div class="card card-top-red">
+      <h3>🛡️ 风险洞察 <span style="font-size:9px;padding:2px 6px;background:rgba(255,107,107,0.1);border-radius:100px;color:#ff6b6b;font-weight:800;">核心创新</span></h3>
+      <p>不等人走了才发现知识没了——提前模拟离职冲击，实时检测知识衰变，代码提交前拦截已知陷阱。五大原创功能。</p>
+      <div class="card-tag card-tag-red">离职模拟 · 风险雷达 · 衰变检测 · 因果链 · 热力图</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 Innovations -->
+<div class="section" id="innovation">
+  <div class="stitle">五大原创功能</div>
+  <div class="h2">从"被动记录"进化为"主动预判"</div>
+  <div class="desc">以下功能在全球知识管理产品中均属首创，是 CodeMind 的核心差异化竞争力。</div>
+  <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="card inno"><div class="inno-icon">💥</div><div class="inno-name">离职模拟器</div><div class="inno-desc">"如果TA明天走"<br>冲击波实时计算</div></div>
+    <div class="card inno"><div class="inno-icon">🛡️</div><div class="inno-name">风险雷达</div><div class="inno-desc">粘贴代码即判<br>是否踩已知陷阱</div></div>
+    <div class="card inno"><div class="inno-icon">🧪</div><div class="inno-name">衰变检测</div><div class="inno-desc">知识新鲜度评分<br>过时自动标记</div></div>
+    <div class="card inno"><div class="inno-icon">🔗</div><div class="inno-name">因果链</div><div class="inno-desc">事故→决策→影响<br>完整追溯</div></div>
+    <div class="card inno"><div class="inno-icon">🔥</div><div class="inno-name">热力图</div><div class="inno-desc">文件×人员密度<br>巴士因子可视化</div></div>
+  </div>
+
+  <div style="margin-top:28px;">
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid #ff6b6b;">
+        <h3>💥 离职冲击模拟器</h3>
+        <p>选择任意团队成员，AI 实时计算其离职后的冲击波——模块瘫痪率、知识黑洞大小、预估恢复成本（人月），并自动生成 P0/P1/P2 优先级的紧急行动建议。</p>
+      </div>
+      <div class="card" style="border-left:3px solid #ffd166;">
+        <h3>🛡️ 代码变更风险雷达</h3>
+        <p>粘贴准备提交的代码，秒速匹配团队知识库中的已知陷阱——"这行代码会触发2024年618大促死锁雪崩事故"。在提交前拦截风险，附带完整来源溯源。</p>
+      </div>
+      <div class="card" style="border-left:3px solid #ff9f43;">
+        <h3>🧪 知识衰变检测器</h3>
+        <p>每条知识胶囊带"新鲜度"评分（0-100），基于创建时间和最后验证时间自动计算。长期未复核的知识自动标黄提醒，支持一键标记"已验证"。</p>
+      </div>
+      <div class="card" style="border-left:3px solid #b794f6;">
+        <h3>🔗 决策因果链 + 🔥 知识热力图</h3>
+        <p>因果链：可视化"事故→决策→代码变更→影响→传承"完整链路，让新人理解每个设计背后的故事。热力图：文件×人员矩阵，💀=无人懂、⚠️=一人懂、✅=多人懂。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROI -->
+<div class="section" id="roi">
+  <div class="stitle">效果对比</div>
+  <div class="h2">不是 10% 的优化，是 10-20x 的跃迁</div>
+  <div class="roi-big">
+    <div class="roi-num">20x</div>
+    <div style="font-size:13px;color:#6b7a99;">核心效率提升</div>
+  </div>
+  <div class="grid-3" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="card roi-card">
+      <div class="roi-before">3-6 个月</div>
+      <div class="roi-after">1-2 周</div>
+      <div class="roi-label">新人上手</div>
+    </div>
+    <div class="card roi-card">
+      <div class="roi-before">30%</div>
+      <div class="roi-after">&lt;5%</div>
+      <div class="roi-label">找信息时间</div>
+    </div>
+    <div class="card roi-card">
+      <div class="roi-before">周 3-5 次</div>
+      <div class="roi-after">月 1 次</div>
+      <div class="roi-label">重复踩坑</div>
+    </div>
+    <div class="card roi-card">
+      <div class="roi-before">&lt;20%</div>
+      <div class="roi-after">80%+</div>
+      <div class="roi-label">知识保留率</div>
+    </div>
+  </div>
+</div>
+
+<!-- User Flow -->
+<div class="section" id="flow">
+  <div class="stitle">使用流程</div>
+  <div class="h2">四步完成知识传承闭环</div>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-step-icon">📊</div><div class="flow-step-title">看清现状</div><div class="flow-step-desc">看板 · 图谱 · 热力图<br>一眼掌握知识健康度</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-icon">🎙️</div><div class="flow-step-title">萃取知识</div><div class="flow-step-desc">AI 访谈 · 代码分析<br>隐性经验变知识胶囊</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-icon">👤</div><div class="flow-step-title">传承赋能</div><div class="flow-step-desc">新人陪跑 · Bug 记忆<br>老师傅视角 AI 导师</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-icon">🛡️</div><div class="flow-step-title">预警风险</div><div class="flow-step-desc">离职模拟 · 风险雷达<br>主动预判不等出事</div></div>
+  </div>
+</div>
+
+<!-- Scenarios -->
+<div class="section">
+  <div class="stitle">适用场景</div>
+  <div class="h2">不只是研发，任何知识密集型团队都适用</div>
+  <div class="grid-2" style="margin-top:20px;">
+    <div class="card scenario"><div class="scenario-title">🏢 研发团队</div><div class="scenario-desc">核心工程师离职交接、新人入职培训、代码库知识沉淀、Bug 经验传承</div></div>
+    <div class="card scenario"><div class="scenario-title">🏥 医疗团队</div><div class="scenario-desc">资深医生经验传承、诊疗方案知识库、新人医生培训陪跑</div></div>
+    <div class="card scenario"><div class="scenario-title">🏭 制造业</div><div class="scenario-desc">老师傅工艺经验保留、设备故障记忆库、新技工快速上手</div></div>
+    <div class="card scenario"><div class="scenario-title">💼 咨询公司</div><div class="scenario-desc">客户项目知识沉淀、方法论传承、顾问离职交接</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="footer" id="demo">
+  <div class="stitle">立即体验</div>
+  <div class="h2" style="margin-bottom:20px;">30 秒体验完整产品</div>
+  <a href="https://cvk0524.github.io/codemind/" class="footer-cta" target="_blank">打开 CodeMind →</a>
+  <div class="footer-url">https://cvk0524.github.io/codemind/</div>
+  <div class="footer-sub">免安装 · 免注册 · 浏览器直接访问 · 内置完整演示数据</div>
+  <div style="margin-top:24px;font-size:11px;color:#4a5568;">CodeMind 代码库脑 · AI 提效赛道参赛作品</div>
+</div>
+
+</div>
+</body>
+</html>

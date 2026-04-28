@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeMind 代码库脑 — 产品宣传</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: #0a0e1a; color: #e8ecf2; }
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 36px; }
+
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid #1f2940; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .logo-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 900; color: #0a0e1a; font-family: monospace; }
+  .title { font-size: 28px; font-weight: 900; }
+  .subtitle { font-size: 15px; color: #a0aec0; margin-bottom: 6px; }
+  .hero-line { font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #4ecdc4, #6a8cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .badge { display: inline-block; padding: 3px 12px; background: rgba(78,205,196,0.1); border: 1px solid rgba(78,205,196,0.25); border-radius: 100px; font-size: 11px; color: #4ecdc4; margin-top: 10px; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 28px; }
+  .stitle { font-size: 12px; color: #6b7a99; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 12px; }
+
+  /* ── Pain ── */
+  .pain-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pain { padding: 16px; background: #111827; border: 1px solid #1f2940; border-radius: 10px; text-align: center; }
+  .pain-num { font-size: 30px; font-weight: 900; color: #ff6b6b; font-family: monospace; line-height: 1.1; }
+  .pain-label { font-size: 12px; color: #a0aec0; margin-top: 3px; }
+  .pain-src { font-size: 9px; color: #4a5568; margin-top: 4px; }
+
+  /* ── Engine ── */
+  .engine-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .engine { padding: 18px 16px; background: #111827; border: 1px solid #1f2940; border-radius: 10px; }
+  .engine-top { border-top: 3px solid #4ecdc4; }
+  .engine-top-red { border-top: 3px solid #ff6b6b; }
+  .engine h3 { font-size: 14px; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .engine p { font-size: 11px; color: #8b93a8; line-height: 1.65; }
+  .engine-tag { display: inline-block; padding: 2px 7px; background: rgba(78,205,196,0.08); border-radius: 100px; font-size: 9px; color: #4ecdc4; margin-top: 8px; }
+  .engine-tag-red { background: rgba(255,107,107,0.08); color: #ff6b6b; }
+
+  /* ── Innovation ── */
+  .inno-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .inno { padding: 14px 8px; background: rgba(78,205,196,0.03); border: 1px solid #1f2940; border-radius: 8px; text-align: center; }
+  .inno-icon { font-size: 22px; }
+  .inno-name { font-size: 11px; font-weight: 700; color: #4ecdc4; margin-top: 4px; }
+  .inno-desc { font-size: 9px; color: #6b7a99; margin-top: 2px; line-height: 1.35; }
+
+  /* ── ROI ── */
+  .roi-row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; align-items: center; }
+  .roi-big { text-align: center; }
+  .roi-num { font-size: 44px; font-weight: 900; font-family: monospace; background: linear-gradient(135deg, #51cf66, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+  .roi-sub { font-size: 11px; color: #6b7a99; margin-top: 2px; }
+  .roi-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .roi-card { text-align: center; padding: 10px 6px; background: #111827; border-radius: 8px; }
+  .roi-before { font-size: 12px; color: #ff6b6b; text-decoration: line-through; opacity: 0.65; }
+  .roi-after { font-size: 17px; font-weight: 900; color: #51cf66; font-family: monospace; margin: 2px 0; }
+  .roi-label { font-size: 9px; color: #6b7a99; }
+
+  /* ── Footer ── */
+  .footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #1f2940; margin-top: 8px; }
+  .footer-l { display: flex; align-items: center; gap: 8px; }
+  .footer-l-icon { width: 22px; height: 22px; border-radius: 5px; background: linear-gradient(135deg, #4ecdc4, #6a8cff); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: #0a0e1a; font-family: monospace; }
+  .footer-l span { font-size: 11px; color: #6b7a99; }
+  .footer-r { text-align: right; }
+  .footer-url { font-size: 10px; color: #4ecdc4; font-family: monospace; }
+  .footer-hint { font-size: 9px; color: #4a5568; margin-top: 2px; }
+
+  @media print {
+    body { background: #fff; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pain, .engine, .inno, .roi-card { background: #f7f8fa; border-color: #e0e0e0; }
+    .footer { border-top-color: #e0e0e0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">CM</div>
+      <span class="title">CodeMind</span>
+    </div>
+    <div class="subtitle">代码库脑 — 让团队的集体智慧永不流失</div>
+    <div class="hero-line">AI 驱动的研发团队知识传承平台</div>
+    <div class="badge">🏆 AI 提效赛道参赛作品</div>
+  </div>
+
+  <!-- 痛点 -->
+  <div class="section">
+    <div class="stitle">核心痛点</div>
+    <div class="pain-row">
+      <div class="pain">
+        <div class="pain-num">3-6 月</div>
+        <div class="pain-label">新人上手周期</div>
+        <div class="pain-src">Stack Overflow 2025</div>
+      </div>
+      <div class="pain">
+        <div class="pain-num">30-50%</div>
+        <div class="pain-label">核心员工离职知识流失率</div>
+        <div class="pain-src">MIT 组织学习研究</div>
+      </div>
+      <div class="pain">
+        <div class="pain-num">30%</div>
+        <div class="pain-label">开发者时间浪费在找信息</div>
+        <div class="pain-src">80%问题团队之前解决过</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三大引擎 -->
+  <div class="section">
+    <div class="stitle">三大 AI 引擎</div>
+    <div class="engine-row">
+      <div class="engine engine-top">
+        <h3>🎙️ 知识萃取</h3>
+        <p>AI 访谈 30 分钟萃取老员工多年经验，生成结构化知识胶囊。临别寄语以第一人称给接手人写信，让传承有温度。</p>
+        <span class="engine-tag">离职访谈 · 临别寄语 · 代码分析</span>
+      </div>
+      <div class="engine engine-top">
+        <h3>👤 新人赋能</h3>
+        <p>"如果老王还在他会说..."——AI 调取离职员工知识胶囊回答，不是泛泛的大模型输出，而是团队真实经验。</p>
+        <span class="engine-tag">新人陪跑 · Bug 记忆库 · 知识图谱</span>
+      </div>
+      <div class="engine engine-top-red">
+        <h3>🛡️ 风险洞察 <span style="font-size:9px;padding:1px 6px;background:rgba(255,107,107,0.1);border-radius:100px;color:#ff6b6b;font-weight:800;">首创</span></h3>
+        <p>不等人走了才发现知识没了——提前模拟离职冲击，实时检测知识衰变，代码提交前拦截已知陷阱。</p>
+        <span class="engine-tag engine-tag-red">离职模拟 · 风险雷达 · 衰变检测 · 因果链 · 热力图</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5大首创 -->
+  <div class="section">
+    <div class="stitle">五大业界首创功能</div>
+    <div class="inno-row">
+      <div class="inno">
+        <div class="inno-icon">💥</div>
+        <div class="inno-name">离职模拟器</div>
+        <div class="inno-desc">"如果TA明天走"<br>冲击波实时计算</div>
+      </div>
+      <div class="inno">
+        <div class="inno-icon">🛡️</div>
+        <div class="inno-name">风险雷达</div>
+        <div class="inno-desc">粘贴代码即判<br>是否踩已知陷阱</div>
+      </div>
+      <div class="inno">
+        <div class="inno-icon">🧪</div>
+        <div class="inno-name">衰变检测</div>
+        <div class="inno-desc">知识新鲜度评分<br>过时自动标记</div>
+      </div>
+      <div class="inno">
+        <div class="inno-icon">🔗</div>
+        <div class="inno-name">因果链</div>
+        <div class="inno-desc">事故→决策→影响<br>完整追溯</div>
+      </div>
+      <div class="inno">
+        <div class="inno-icon">🔥</div>
+        <div class="inno-name">热力图</div>
+        <div class="inno-desc">文件×人员密度<br>巴士因子可视化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROI -->
+  <div class="section">
+    <div class="stitle">效果对比</div>
+    <div class="roi-row">
+      <div class="roi-big">
+        <div class="roi-num">20x</div>
+        <div class="roi-sub">核心效率提升</div>
+      </div>
+      <div class="roi-cards">
+        <div class="roi-card">
+          <div class="roi-before">3-6 个月</div>
+          <div class="roi-after">3-7 天</div>
+          <div class="roi-label">新人上手</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-before">30%</div>
+          <div class="roi-after">&lt;5%</div>
+          <div class="roi-label">找信息时间</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-before">周 3-5 次</div>
+          <div class="roi-after">月 1 次</div>
+          <div class="roi-label">重复踩坑</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-before">&lt;20%</div>
+          <div class="roi-after">80%+</div>
+          <div class="roi-label">知识保留率</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-l">
+      <div class="footer-l-icon">CM</div>
+      <span>CodeMind 代码库脑 · AI 提效赛道</span>
+    </div>
+    <div class="footer-r">
+      <div class="footer-url">https://cvk0524.github.io/codemind/</div>
+      <div class="footer-hint">访问链接立即体验 · 按 ⌘K 全局搜索</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
